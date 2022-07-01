@@ -22,6 +22,8 @@ pub async fn send_request(url: &str) -> String {
         .expect("Failed to convert to text :(")
 }
 
-pub fn blockchain_status_request() {
-
+pub fn blockchain_status_request() -> BlockchainStatus {
+    let response = send_request(&ROOT_URL);
+    println!("{}", response);
+    serde_json::from_str(&response).expect("Could not parse json :(")
 }
