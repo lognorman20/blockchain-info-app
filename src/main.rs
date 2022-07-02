@@ -36,7 +36,6 @@ fn blockchain_info_app(address: &str) {
     println!("The given address has {} total transactions.",
         &blockchain_address.txids.len()
     );
-    
 }
 
 fn main() {
