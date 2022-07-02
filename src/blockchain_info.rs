@@ -6,7 +6,7 @@ use crate::blockchain_status::BlockchainStatus;
 use crate::blockchain_address::BlockchainAddress;
 use crate::blockchain_tx::BlockchainTx;
 
-const ROOT_URL: &str = "https://btcbook.nownodes.io/api/v2/";
+const ROOT_URL: &str = "https://btcbook.nownodes.io/api/";
 
 #[tokio::main]
 pub async fn send_request(url: &str) -> String {
@@ -24,6 +24,11 @@ pub async fn send_request(url: &str) -> String {
 
 pub fn blockchain_status_request() -> BlockchainStatus {
     let response = send_request(&ROOT_URL);
-    println!("{}", response);
     serde_json::from_str(&response).expect("Could not parse json :(")
+}
+
+pub fn blockchain_address_request(address: &str) -> BlockchainAddress{
+    println!("Request = {}", &[ROOT_URL, "v2/address/", &address].join(""));
+    let response = send_request(&[ROOT_URL, "v2/address/", &address].join(""));
+    serde_json::from_str(&response).expect("Could not parse address Json :('")
 }

@@ -5,7 +5,7 @@ pub struct BlockchainAddress {
     // total_pages: i64,
     // items_on_page: i64,
     pub address: String,
-    // balance: String,
+    pub balance: String,
     // total_received: String,
     // total_sent: String,
     // unconfirmed_balance: String,
